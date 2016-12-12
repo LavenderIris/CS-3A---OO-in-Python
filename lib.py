@@ -1,3 +1,11 @@
+"""
+Priscilla Chung Finder
+CS 3A Final Project
+This is the lib library which defines the Box and Board objects.  Board includes most of the gameplay flow.
+Written in Python 3
+
+"""
+
 import pygame, itertools
 
 
@@ -50,14 +58,11 @@ class Box(object):
             effect.play()
             img = pygame.image.load("ryu_punch.png").convert_alpha()
             surface.blit(img, (self.rect.centerx - self.radius-5, self.rect.centery - self.radius-5))
-#            pygame.draw.line(self.board.surface, RED, (self.rect.centerx - self.radius, self.rect.centery - self.radius), (self.rect.centerx + self.radius, self.rect.centery + self.radius), self.line_width)
-#            pygame.draw.line(self.board.surface, RED, (self.rect.centerx - self.radius, self.rect.centery + self.radius), (self.rect.centerx + self.radius, self.rect.centery - self.radius), self.line_width)
         else:
             effect = pygame.mixer.Sound("tigerblow.wav")
             effect.play()
             img = pygame.image.load("sagat_kick.png").convert_alpha()
             surface.blit(img, (self.rect.centerx - self.radius-5, self.rect.centery - self.radius-5))
-           # pygame.draw.circle(self.board.surface, BLUE, (int(self.rect.centerx), int(self.rect.centery)), int(self.radius), int(self.line_width))
 
 
 class Board(object):
@@ -326,8 +331,8 @@ class Board(object):
 
         rect.center = (surface_size / 2, surface_size / 4)
         self.surface.blit(text, rect)
-        # prompt to play again
 
+        # prompt to play again
         font = pygame.font.Font('freesansbold.ttf', int(surface_size / 12))
         text1 = "Continue?"
         text1 = font.render(text1, True, BLACK, GREEN)

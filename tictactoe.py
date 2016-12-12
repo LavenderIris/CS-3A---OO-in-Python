@@ -3,7 +3,14 @@ from pygame.locals import QUIT, MOUSEBUTTONUP
 
 from lib import Board
 
+"""
+Priscilla Chung Finder
+CS 3A Final Project
+Tic tac toe main file loop that runs pygame
+Sets up the board and clock loop
+Written in Python 3
 
+"""
 pygame.init()
 clock = pygame.time.Clock()
 board = Board(grid_size=3, box_size=100, border=50, line_width=10)
