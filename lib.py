@@ -36,6 +36,7 @@ class Box(object):
             :type size: int
             :type board: int
         """
+
         self.size = size
         self.line_width = int(self.size / 20) if self.size > 40 else 1
         self.radius = (self.size / 2) - (self.size / 8)
@@ -98,8 +99,9 @@ class Board(object):
         Returns:
             :return: Nothing
         """
+        pygame.init()
+        pygame.mixer.init()
         pygame.display.set_caption('Tic Tac Toe - Christmas edition')
-
         self.surface.fill(GREEN)
         self.draw_lines()
         self.initialize_boxes()
@@ -209,9 +211,9 @@ class Board(object):
             :return Nothing
         """
         surface_size = self.surface.get_height()
-        if x < (surface_size / 2.5) and (surface_size / 2.5 ) < y < surface_size:
+        if x < (surface_size / 2.5) and (surface_size / 2.8) < y < surface_size:
             self.setup()
-        elif (surface_size / 2.5 ) < x < surface_size and (surface_size / 2.5) < y < surface_size:
+        elif (surface_size / 2.5) < x < surface_size and (surface_size / 2.8) < y < surface_size:
             pygame.quit()
 
     def play_turn(self, box):
@@ -320,6 +322,10 @@ class Board(object):
         Returns:
             :return: Nothing
         """
+
+        pygame.mixer.music.load('gameover.wav')
+        pygame.mixer.music.play(0)
+
         surface_size = self.surface.get_height()
         font = pygame.font.Font('freesansbold.ttf', int(surface_size / 8))
         if winner:
@@ -328,9 +334,9 @@ class Board(object):
             text = 'Draw!'
         text = font.render(text, True, BLACK, GREEN)
         rect = text.get_rect()
-
         rect.center = (surface_size / 2, surface_size / 4)
         self.surface.blit(text, rect)
+
 
         # prompt to play again
         font = pygame.font.Font('freesansbold.ttf', int(surface_size / 12))
